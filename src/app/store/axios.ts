@@ -8,7 +8,10 @@ export const axiosl = axios.create({
 });
 
 axiosl.interceptors.request.use(function (config) {
-  const token = localStorage.getItem("token");
+  let token = null;
+  if (typeof window != "undefined") {
+    token = localStorage.getItem("token");
+  }
 
   if (token) {
     config.headers.Authorization =  "Bearer " + token;

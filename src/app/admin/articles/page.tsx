@@ -6,7 +6,6 @@ import React from 'react';
 import DashboardNavigation from '../dashboard/navigation';
 import { Article } from '@/app/interfaces/article';
 import "./index.css";
-import FabButton from '@/app/components/FabButton';
 import Drawer from '@/app/components/Drawer';
 import AddArticleForm from './addArticle';
 import Button from '@/app/components/Button';
@@ -48,7 +47,7 @@ const Articles = (props: DashboardProps) => {
     }).catch(err => {
       router.push("/admin/login", shallowRouting);
     })
-  }, [])
+  }, [router])
 
   return (
     <DashboardNavigation page="articles">

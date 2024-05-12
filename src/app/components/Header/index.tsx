@@ -138,13 +138,13 @@ const Header = () => {
 			<div className="right-section">
 				<ul className="menu">
 					{headerItems.map((hi) => (
-						<React.Fragment>
+						<React.Fragment key={`item-main-${hi.name}`}>
 							{hi.type === "menu" ? (
-								<li className={`item`}>
+								<li className={`item`} key={`item-${hi.name}`}>
 									<Link href={hi.to}>{hi.label}{hi.to === pathName && <span className="active-item"></span> }</Link>
 								</li>
 							) : (
-								<li className="item">
+								<li className="item" key={`item-${hi.name}`}>
 									<Link href={hi.to} target="_blank">
 										<UiButton value="Download CV" glyphIcon={hi.icon} />
 									</Link>

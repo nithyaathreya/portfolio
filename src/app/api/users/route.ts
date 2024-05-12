@@ -60,16 +60,3 @@ export async function POST(req: Request, res: Response) {
     });
   });
 }
-
-export const getUserByEmailId = async (emailId: string) => {
-	return await new Promise(async (resolve, reject) => {
-		await apiGet(`SELECT * from users WHERE emailId = ?`, [emailId])
-		.then((res) => {
-			const user = (res as User[])[0];
-			resolve(user)
-		})
-		.catch((err: Error) => {
-			reject(undefined)
-		});
-	});
-};

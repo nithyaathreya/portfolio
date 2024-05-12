@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "@/app/components/Button";
 import Input from "@/app/components/Input";
 import { useRouter } from "next/navigation";
@@ -8,7 +8,7 @@ import "./index.css";
 import { axiosl, shallowRouting } from "@/app/store/axios";
 
 const Login = () => {
-	const { setToken } = useTokenStore();
+	const { setToken, token } = useTokenStore();
 	const { setIsAuthenticated } = useAppStore();
 	const router = useRouter();
 
@@ -20,7 +20,7 @@ const Login = () => {
 		axiosl
 			.post("auth/login", body)
 			.then((res) => {
-				localStorage.setItem("token", res.data.token);
+				setToken(res.data.token);
 				setIsAuthenticated(true);
 				router.push("/admin/dashboard", shallowRouting);
 			})
@@ -28,6 +28,12 @@ const Login = () => {
 				console.log(err);
 			});
 	};
+
+  useEffect(() => {
+    if (token && typeof window != "undefined") {
+      localStorage.setItem("token", token)
+    }
+  }, [token])
 
 	return (
 		<form action={onClickHandler}>

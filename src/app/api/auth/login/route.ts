@@ -1,5 +1,5 @@
 import { User } from "@/app/interfaces/user";
-import { getUserByEmailId } from "../../users/route";
+import { apiGet } from "../../database";
 
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -9,7 +9,7 @@ export async function POST(req: Request, res: Response) {
 	const { emailId, password } = body;
 
 	let respBody, status;
-	await getUserByEmailId(emailId)
+	await apiGet(`SELECT * from users WHERE emailId = ?`, [emailId])
 		.then((res) => {
 			const user = res as User;
 			if (user && bcrypt.compare(password, user?.password)) {

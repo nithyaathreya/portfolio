@@ -30,7 +30,7 @@ function Table<T extends { id: number }>(props: Props<T>) {
             props.data.map(d => (
               <tr key={`article#-${d.id}`}>
                 {props.columns.map(h => (
-                  <td className='column'>
+                  <td className='column' key={`col-${h.key}`}>
                     {h.render(d)}
                   </td>
                 ))}
