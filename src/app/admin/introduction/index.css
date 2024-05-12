@@ -1,0 +1,7 @@
+.home-content {
+  padding: 32px;
+  input, textarea {
+    width: 100%;
+    margin: 0 0 20px;
+  }
+}

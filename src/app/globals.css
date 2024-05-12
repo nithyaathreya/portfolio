@@ -1,0 +1,72 @@
+:root {
+  --foreground-color: 26, 26, 26;
+  --background-color: 248, 248, 255;
+  --lbackground-color: 255, 255, 255;
+
+  --text-color: 26, 26, 26;
+  --primary-color: 130, 96, 232;
+  --lprimary-color: 235, 228, 255;
+  --border-color: 26, 26, 26;
+
+  --black-color: 0, 0, 0;
+  --white-color: 255, 255, 255;
+
+  --bg-gradient: radial-gradient(circle at 24.1% 68.8%, rgb(var(--lbackground-color)) 0%, rgb(var(--background-color)) 99.4%);
+  --shadow-root: 0 0 6px 0 rgba(0,0,0,0.15);
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-color: 255, 255, 255;
+    --background-color: 0, 0, 0;
+    --lbackground-color: 0, 1, 42;
+
+    --text-color: 255, 255, 255;
+    --primary-color: 220, 20, 60;
+    --border-color: 63, 63, 63;
+
+    --bg-gradient: radial-gradient(circle at 24.1% 68.8%, rgb(var(--lbackground-color)) 0%, rgb(var(--background-color)) 99.4%);
+  }
+} */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: rgb(var(--foreground-color));
+  background-color: transparent;
+  background: var(--bg-gradient) !important;
+  * {
+    font-family: Montserrat, sans-serif;
+  }
+}
+
+.separator-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+label {
+  font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6, .title-font {
+  font-optical-sizing: auto;
+  font-weight: 600;
+  margin: 0;
+}
+
+p, span, .body-font {
+  font-size: 14px;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  line-height: 1.6rem;
+  margin: 0;
+}
+
+a {
+  text-decoration: none !important;
+}

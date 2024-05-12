@@ -1,0 +1,55 @@
+/* .pr-table {
+  border-radius: 8px;
+  border: 1px solid rgb(var(--border-color));
+}
+.row {
+  border-bottom: 1px solid rgb(var(--border-color));
+  &.header {
+    background: rgba(var(--foreground-rgb), 0.2);
+  }
+}
+
+.column, th {
+  padding: 8px;
+  max-width: calc(80dvw / 3);
+  overflow-x: hidden;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  border: 1px solid rgb(var(--border-color));
+} */
+
+.table-container {
+  background-color: rgba(var(--lbackground-color), 1);
+  border-radius: 8px;
+  box-shadow: 0 0 8px 4px rgba(var(--foreground-color), 0.2);
+}
+
+.styled-table {
+  border-collapse: collapse;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(var(--background-color), 0.2);
+  background-color: rgba(var(--lbackground-color), 1);
+  border-radius: 8px;
+}
+
+.styled-table thead tr {
+  color: rgb(var(--text-color));
+  text-align: left;
+  border-bottom: 2px solid rgba(var(--border-color));
+}
+
+.styled-table th,
+.styled-table td {
+  min-width: 200px;
+  padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid rgba(var(--border-color));
+}
+
+/* .styled-table tbody tr:nth-of-type(even) {
+  background-color: rgba(var(--foreground-color), 0.1);
+} */

@@ -1,0 +1,23 @@
+/* .input-root {
+  display: block;
+  padding: 8px 16px;
+  border-radius: 2px;
+  border: 1px solid rgb(var(--border-color));
+  background: black;
+  &:focus, &:focus-visible {
+    outline: 1px solid rgb(var(--primary-color));
+    box-shadow: 0 0 15px 1px rgb(var(--primary-color));
+  }
+} */
+
+.input-root {
+  display: block;
+  padding: 8px 16px;
+  border-radius: 2px;
+  border: 0 transparent;
+  background: rgba(var(--foreground-color), 0.1);
+  &:focus, &:focus-visible {
+    outline: 1px solid rgb(var(--primary-color), 0.3);
+    box-shadow: 0 0 15px 1px inset rgb(var(--primary-color), 0.2);
+  }
+}

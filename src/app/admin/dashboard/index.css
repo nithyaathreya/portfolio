@@ -1,0 +1,35 @@
+.dashboard-layout {
+  display: flex;
+  flex-direction: row;
+  flex: 1 50%;
+}
+
+.outlet {
+  flex: 1;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20dvw;
+  min-height: 100dvh;
+  border-right: 1px solid rgb(var(--border-color));
+}
+
+.prf-nav > a > .item {
+  padding: 16px 24px;
+  &.active {
+    background: rgba(var(--foreground-color), 0.1);
+  }
+}
+
+.name-render {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  p {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
+}
