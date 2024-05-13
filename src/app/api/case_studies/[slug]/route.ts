@@ -1,4 +1,13 @@
+import { CaseStudy } from "@/app/interfaces/common";
 import { apiGet } from "../../database";
+
+export async function generateStaticParams() {  
+  const case_studies = await apiGet("SELECT * FROM case_studies", []);
+  
+  return (case_studies as CaseStudy[]).map((case_study: CaseStudy) => ({
+    slug: case_study.slug,
+  }))
+}
 
 export async function GET(
   request: Request,
