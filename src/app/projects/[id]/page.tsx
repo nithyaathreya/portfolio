@@ -1,29 +1,16 @@
+"use client"
 import withHeader from '@/app/components/withHeader';
 import { CaseStudy } from '@/app/interfaces/common';
 import { axiosl } from '@/app/store/axios';
+import { useParams } from 'next/navigation';
 import React from 'react';
 
-export async function generateStaticParams() {
-  let case_studies = [];
-  if (typeof window !== "undefined") {
-    const res = await axiosl.get("case_studies");
-    case_studies = res.data
-  }
- 
-  return case_studies.map((case_study: CaseStudy) => ({
-    slug: case_study.slug,
-  }))
-}
-
-interface Props {
-  params: { slug: string; };
-}
-
-const Project = ({ params }: Props) => {
-  const { slug } = params
+const Project = () => {
+  const params = useParams()
+  const { id } = params;
 
   React.useEffect(() => {
-    axiosl.get(`case_studies/${slug}`).then(res => {
+    axiosl.get(`case_studies/${id}`).then(res => {
       const study = (res.data[0] as CaseStudy).body;
       const cont = document.getElementById("main-container");
       if (cont) cont.innerHTML = study;
