@@ -1,13 +1,16 @@
-"use client"
 import withHeader from '@/app/components/withHeader';
 import { CaseStudy } from '@/app/interfaces/common';
 import { axiosl } from '@/app/store/axios';
 import React from 'react';
 
 export async function generateStaticParams() {
-  const case_studies = await axiosl.get("case_studies");
+  let case_studies = [];
+  if (typeof window !== "undefined") {
+    const res = await axiosl.get("case_studies");
+    case_studies = res.data
+  }
  
-  return case_studies.data.map((case_study: CaseStudy) => ({
+  return case_studies.map((case_study: CaseStudy) => ({
     slug: case_study.slug,
   }))
 }
