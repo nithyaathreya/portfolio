@@ -1,10 +1,5 @@
 import { apiGet } from "../../database";
 
-// Define a dummy generateStaticParams function
-export async function generateStaticParams() {
-  return [];
-}
-
 export async function GET(
   request: Request,
   { params }: { params: { slug: string } }

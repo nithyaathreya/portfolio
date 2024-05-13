@@ -7,13 +7,13 @@ import React from 'react';
 export async function generateStaticParams() {
   const case_studies = await axiosl.get("case_studies");
  
-  return case_studies.map((case_study) => ({
+  return case_studies.data.map((case_study: CaseStudy) => ({
     slug: case_study.slug,
   }))
 }
 
 interface Props {
-  params: any;
+  params: { slug: string; };
 }
 
 const Project = ({ params }: Props) => {
