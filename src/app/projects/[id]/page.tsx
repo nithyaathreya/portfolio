@@ -2,14 +2,25 @@
 import withHeader from '@/app/components/withHeader';
 import { CaseStudy } from '@/app/interfaces/common';
 import { axiosl } from '@/app/store/axios';
-import { useParams } from 'next/navigation';
 import React from 'react';
 
-const Project = () => {
-  const {id} = useParams();
+export async function generateStaticParams() {
+  const case_studies = await axiosl.get("case_studies");
+ 
+  return case_studies.map((case_study) => ({
+    slug: case_study.slug,
+  }))
+}
+
+interface Props {
+  params: any;
+}
+
+const Project = ({ params }: Props) => {
+  const { slug } = params
 
   React.useEffect(() => {
-    axiosl.get(`case_studies/${id}`).then(res => {
+    axiosl.get(`case_studies/${slug}`).then(res => {
       const study = (res.data[0] as CaseStudy).body;
       const cont = document.getElementById("main-container");
       if (cont) cont.innerHTML = study;
