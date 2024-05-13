@@ -2,6 +2,7 @@ import { apiGet } from '@/app/api/database';
 import withHeader from '@/app/components/withHeader';
 import { CaseStudy } from '@/app/interfaces/common';
 import { axiosl } from '@/app/store/axios';
+import { useParams } from 'next/navigation';
 import React from 'react';
 
 export async function generateStaticParams() {
@@ -12,14 +13,14 @@ export async function generateStaticParams() {
 }
 
 interface Props {
-  params: { slug: string; };
+  params: { slug: string; }[];
 }
 
 const Project = ({ params }: Props) => {
-  const { slug } = params
+  const {id} = useParams();
 
   React.useEffect(() => {
-    axiosl.get(`case_studies/${slug}`).then(res => {
+    axiosl.get(`case_studies/${id}`).then(res => {
       const study = (res.data[0] as CaseStudy).body;
       const cont = document.getElementById("main-container");
       if (cont) cont.innerHTML = study;
